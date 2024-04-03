@@ -13,7 +13,7 @@ interface IExpenseRecords {
 export default function ExpenseList({ expenseRecords }: IExpenseRecords) {
   return (
     <>
-      <Container maxW='container.md' px={4} pt={8}>
+      <Container maxW='container.md' px={4} py={8}>
         <Table variant='striped' colorScheme='gray'>
           <Thead>
             <Tr>
