@@ -6,11 +6,12 @@ import ExpenseItem from './ExpenseItem';
 
 // interface
 import { IExpenseItem } from '../App';
-interface IExpenseRecords {
+interface Props {
   expenseRecords: IExpenseItem[];
+  onDelete: (id: string) => void;
 }
 
-export default function ExpenseList({ expenseRecords }: IExpenseRecords) {
+export default function ExpenseList({ expenseRecords, onDelete }: Props) {
   return (
     <>
       <Container maxW='container.md' px={4} py={8}>
@@ -25,7 +26,7 @@ export default function ExpenseList({ expenseRecords }: IExpenseRecords) {
           </Thead>
           <Tbody>
             {expenseRecords.map((item) => (
-              <ExpenseItem item={item} />
+              <ExpenseItem item={item} onDelete={onDelete} key={item.id} />
             ))}
           </Tbody>
         </Table>
