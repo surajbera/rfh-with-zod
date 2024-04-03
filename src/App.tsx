@@ -22,7 +22,7 @@ function App() {
   const [expenseRecords, setExpenseRecords] = useState<IExpenseItem[]>(dummyData);
 
   const onDelete = (id: string) => {
-    console.log(id);
+    setExpenseRecords((prevExpenseRecords) => prevExpenseRecords.filter((item) => item.id !== id));
   };
 
   return (

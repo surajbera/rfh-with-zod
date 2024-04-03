@@ -12,6 +12,8 @@ interface Props {
 }
 
 export default function ExpenseList({ expenseRecords, onDelete }: Props) {
+  if (expenseRecords.length === 0) return null;
+
   const totalAmount = expenseRecords.reduce((acc, record) => {
     return acc + record.amount;
   }, 0);
