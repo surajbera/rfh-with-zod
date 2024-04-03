@@ -1,5 +1,5 @@
 // libraries
-import { Table, Thead, Tbody, Tr, Th, Container } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, Container } from '@chakra-ui/react';
 
 // components
 import ExpenseItem from './ExpenseItem';
@@ -12,6 +12,10 @@ interface Props {
 }
 
 export default function ExpenseList({ expenseRecords, onDelete }: Props) {
+  const totalAmount = expenseRecords.reduce((acc, record) => {
+    return acc + record.amount;
+  }, 0);
+
   return (
     <>
       <Container maxW='container.md' px={4} py={8}>
@@ -29,6 +33,14 @@ export default function ExpenseList({ expenseRecords, onDelete }: Props) {
               <ExpenseItem item={item} onDelete={onDelete} key={item.id} />
             ))}
           </Tbody>
+          <Tfoot bg='blue.100'>
+            <Tr fontWeight='bold' fontStyle='italic'>
+              <Td>Total:</Td>
+              <Td isNumeric>{totalAmount}</Td>
+              <Td></Td> {/* Empty cell for the category column */}
+              <Td></Td> {/* Empty cell for the delete column */}
+            </Tr>
+          </Tfoot>
         </Table>
       </Container>
     </>
