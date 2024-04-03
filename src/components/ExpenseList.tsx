@@ -37,8 +37,8 @@ export default function ExpenseList({ expenseRecords, onDelete }: Props) {
             <Tr fontWeight='bold' fontStyle='italic'>
               <Td>Total:</Td>
               <Td isNumeric>{totalAmount}</Td>
-              <Td></Td> {/* Empty cell for the category column */}
-              <Td></Td> {/* Empty cell for the delete column */}
+              <Td></Td>
+              <Td></Td>
             </Tr>
           </Tfoot>
         </Table>
