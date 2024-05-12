@@ -9,7 +9,7 @@ import {
   VStack,
   Button,
   Box,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 export default function ExpenseForm() {
   return (

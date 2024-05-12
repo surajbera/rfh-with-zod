@@ -1,15 +1,15 @@
 // libraries
-import { useState } from 'react';
-import { Container } from '@chakra-ui/react';
+import { useState } from "react";
+import { Container } from "@chakra-ui/react";
 
 // components
-import ExpenseForm from './components/ExpenseForm';
-import ExpenseList from './components/ExpenseList';
+import ExpenseForm from "./components/ExpenseForm";
+import ExpenseList from "./components/ExpenseList";
 
 // styles
-import './App.css';
+import "./App.css";
 
-import { dummyData } from './data';
+import { dummyData } from "./data";
 
 export interface IExpenseItem {
   id: string;
@@ -21,7 +21,7 @@ export interface IExpenseItem {
 function App() {
   const [expenseRecords, setExpenseRecords] = useState<IExpenseItem[]>(dummyData);
 
-  const onDelete = (id: string) => {
+  const handleDelete = (id: string) => {
     setExpenseRecords((prevExpenseRecords) => prevExpenseRecords.filter((item) => item.id !== id));
   };
 
@@ -31,7 +31,7 @@ function App() {
         <ExpenseForm />
       </Container>
 
-      <ExpenseList expenseRecords={expenseRecords} onDelete={onDelete} />
+      <ExpenseList expenseRecords={expenseRecords} onDelete={handleDelete} />
     </>
   );
 }
