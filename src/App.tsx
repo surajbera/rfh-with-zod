@@ -5,6 +5,7 @@ import { Container } from "@chakra-ui/react";
 // components
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
+import ExpenseFilter from "./components/ExpenseFilter";
 
 // styles
 import "./App.css";
@@ -30,7 +31,7 @@ function App() {
       <Container>
         <ExpenseForm />
       </Container>
-
+      <ExpenseFilter />
       <ExpenseList expenseRecords={expenseRecords} onDelete={handleDelete} />
     </>
   );
