@@ -1,5 +1,5 @@
 // libraries
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container } from "@chakra-ui/react";
 
 // components
@@ -10,7 +10,7 @@ import ExpenseFilter from "./components/ExpenseFilter";
 // styles
 import "./App.css";
 
-import { dummyData } from "./data";
+import { initialData } from "./data";
 
 export interface IExpenseItem {
   id: string;
@@ -20,7 +20,7 @@ export interface IExpenseItem {
 }
 
 function App() {
-  const [expenseRecords, setExpenseRecords] = useState<IExpenseItem[]>(dummyData);
+  const [expenseRecords, setExpenseRecords] = useState<IExpenseItem[]>(initialData);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleDelete = (id: string) => {

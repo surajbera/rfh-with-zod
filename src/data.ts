@@ -1,4 +1,4 @@
-export const dummyData = [
+export const initialData = [
   {
     id: "1",
     title: "Groceries",
