@@ -1,5 +1,26 @@
 export const initialData = [
   {
+    id: "8",
+    title: "Manicure",
+    amount: 35,
+    category: "personal-care",
+  },
+  {
+    id: "9",
+    title: "Breakfast",
+    amount: 15,
+    category: "food-dining",
+  },
+  {
+    id: "10",
+    title: "Taxi Ride",
+    amount: 25,
+    category: "transportation",
+  },
+];
+
+export const fullData = [
+  {
     id: "1",
     title: "Groceries",
     amount: 50,

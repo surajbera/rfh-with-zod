@@ -18,42 +18,53 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const categories = ["food-dining", "transportation", "housing", "personal-care"] as const;
 
 const schema = z.object({
-  "expense-title": z
+  id: z.string().optional(),
+  title: z
     .string()
     .min(3, "Title must be at least 3 characters")
     .max(50, "Title must be under 50 characters"),
-  "expense-amount": z
+  amount: z
     .number({ invalid_type_error: "Amount is required" })
     .min(0.01, "Amount must be greater than zero")
     .max(100_000, "Amount must not exceed 100,000"),
-  "expense-category": z.enum([...categories], {
+  category: z.enum([...categories], {
     errorMap: () => ({ message: "Category is required" }),
   }),
 });
 
 type ExpenseFormData = z.infer<typeof schema>;
 
-export default function ExpenseForm() {
+interface ExpenseFormProps {
+  onSubmit: (data: ExpenseFormData) => void;
+}
+
+export default function ExpenseForm({ onSubmit }: ExpenseFormProps) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ExpenseFormData>({
     resolver: zodResolver(schema),
   });
 
+  const onSubmitForm = (data: ExpenseFormData) => {
+    onSubmit(data); // Call the parent handler
+    reset(); // Reset the form fields after submission
+  };
+
   return (
     <>
       <Box pt={4}>
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <form onSubmit={handleSubmit(onSubmitForm)}>
           <VStack spacing={4} align='start'>
             {/* Expense Title */}
             <FormControl id='expense-title'>
               <FormLabel>Expense Title</FormLabel>
-              <Input {...register("expense-title")} type='text' />
-              {errors["expense-title"] && (
+              <Input {...register("title")} type='text' />
+              {errors["title"] && (
                 <Text color='red.500' fontSize='sm' mt={2}>
-                  {errors["expense-title"].message}
+                  {errors["title"].message}
                 </Text>
               )}
             </FormControl>
@@ -62,27 +73,27 @@ export default function ExpenseForm() {
             <FormControl id='expense-amount'>
               <FormLabel>Expense Amount</FormLabel>
               <NumberInput>
-                <NumberInputField {...register("expense-amount", { valueAsNumber: true })} />
+                <NumberInputField {...register("amount", { valueAsNumber: true })} />
               </NumberInput>
-              {errors["expense-amount"] && (
+              {errors["amount"] && (
                 <Text color='red.500' fontSize='sm' mt={2}>
-                  {errors["expense-amount"].message}
+                  {errors["amount"].message}
                 </Text>
               )}
             </FormControl>
             {/* Expense Category */}
             <FormControl id='expense-category'>
               <FormLabel>Expense Category</FormLabel>
-              <Select {...register("expense-category")}>
+              <Select {...register("category")}>
                 <option value=''></option>
                 <option value='food-dining'>Food & Dining</option>
                 <option value='transportation'>Transportation</option>
                 <option value='housing'>Housing</option>
                 <option value='personal-care'>Personal Care</option>
               </Select>
-              {errors["expense-category"] && (
+              {errors["category"] && (
                 <Text color='red.500' fontSize='sm' mt={2}>
-                  {errors["expense-category"].message}
+                  {errors["category"].message}
                 </Text>
               )}
             </FormControl>

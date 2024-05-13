@@ -13,7 +13,7 @@ import "./App.css";
 import { initialData } from "./data";
 
 export interface IExpenseItem {
-  id: string;
+  id?: string;
   title: string;
   amount: number;
   category: string;
@@ -27,6 +27,13 @@ function App() {
     setExpenseRecords((prevExpenseRecords) => prevExpenseRecords.filter((item) => item.id !== id));
   };
 
+  const handleAddExpense = (newExpense: IExpenseItem) => {
+    setExpenseRecords((prevExpenseRecords) => [
+      ...prevExpenseRecords,
+      { ...newExpense, id: `id_${prevExpenseRecords.length + 1}` }, // Ensuring ID uniqueness
+    ]);
+  };
+
   const visibleExpenses = selectedCategory
     ? expenseRecords.filter((e) => e.category === selectedCategory)
     : expenseRecords;
@@ -34,7 +41,7 @@ function App() {
   return (
     <>
       <Container>
-        <ExpenseForm />
+        <ExpenseForm onSubmit={handleAddExpense} />
       </Container>
       <ExpenseFilter onSelectCategory={setSelectedCategory} />
       <ExpenseList expenseRecords={visibleExpenses} onDelete={handleDelete} />
