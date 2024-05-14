@@ -28,8 +28,8 @@ This is a simple expense tracker application built with React and TypeScript. Th
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/surajbera/rhf-expense-tracker-practise-project.git
-    cd rhf-expense-tracker-practise-project
+    git clone https://github.com/surajbera/rhf-with-zod.git
+    cd rhf-with-zod
     ```
 2. Install the dependencies:
     ```bash
