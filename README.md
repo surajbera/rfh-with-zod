@@ -1,4 +1,5 @@
 <h1>Expense Tracker Application</h1>
+**Live Demo:** [View Application](https://simple-expense-tracker-c6f72.web.app/)
 
 This is a simple expense tracker application built with React and TypeScript. The primary goal of this project was to learn how to use the **zod** library in conjunction with **react-hook-form**.
 
