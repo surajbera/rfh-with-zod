@@ -1,9 +1,9 @@
 export const initialData = [
   {
-    id: "8",
-    title: "Manicure",
-    amount: 35,
-    category: "personal-care",
+    id: "1",
+    title: "Groceries",
+    amount: 50,
+    category: "food-dining",
   },
   {
     id: "9",

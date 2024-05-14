@@ -62,9 +62,9 @@ export default function ExpenseForm({ onSubmit }: ExpenseFormProps) {
             <FormControl id='expense-title'>
               <FormLabel>Expense Title</FormLabel>
               <Input {...register("title")} type='text' />
-              {errors["title"] && (
+              {errors.title && (
                 <Text color='red.500' fontSize='sm' mt={2}>
-                  {errors["title"].message}
+                  {errors.title.message}
                 </Text>
               )}
             </FormControl>
@@ -75,9 +75,9 @@ export default function ExpenseForm({ onSubmit }: ExpenseFormProps) {
               <NumberInput>
                 <NumberInputField {...register("amount", { valueAsNumber: true })} />
               </NumberInput>
-              {errors["amount"] && (
+              {errors.amount && (
                 <Text color='red.500' fontSize='sm' mt={2}>
-                  {errors["amount"].message}
+                  {errors.amount.message}
                 </Text>
               )}
             </FormControl>
@@ -91,9 +91,9 @@ export default function ExpenseForm({ onSubmit }: ExpenseFormProps) {
                 <option value='housing'>Housing</option>
                 <option value='personal-care'>Personal Care</option>
               </Select>
-              {errors["category"] && (
+              {errors.category && (
                 <Text color='red.500' fontSize='sm' mt={2}>
-                  {errors["category"].message}
+                  {errors.category.message}
                 </Text>
               )}
             </FormControl>
