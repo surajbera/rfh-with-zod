@@ -13,7 +13,7 @@ export default function ExpenseItem({ item, onDelete: handleDelete }: Props) {
       <Td isNumeric>{item.amount}</Td>
       <Td>{item.category}</Td>
       <Td>
-        <Button colorScheme='red' size='sm' onClick={() => handleDelete(item.id)}>
+        <Button colorScheme='red' size='sm' onClick={() => handleDelete(item.id as string)}>
           Delete
         </Button>
       </Td>
