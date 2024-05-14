@@ -39,7 +39,7 @@ This is a simple expense tracker application built with React and TypeScript. Th
 ## Usage
 1. Start the development server:
     ```bash
-    npm start
+    npm run dev
     ```
 2. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
